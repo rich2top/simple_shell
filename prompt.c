@@ -17,8 +17,14 @@ void shell_prompt(void)
 
 		char *input = custom_getline_function();
 
-		strcpy(buffer, input);
-		strtok(input, " ");
+		input[strcspn(input, "\n")] = '\0';
+
+		if (input[0] == '\0')
+		{
+			free(input);
+			continue;
+		}
+
 
 		fork_function(input);
 		free(input);
