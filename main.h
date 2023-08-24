@@ -1,5 +1,5 @@
-#ifndef HEADER_H
-#define HEADER
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 #include <string.h>
@@ -9,8 +9,10 @@
 
 #define BUFFER_SIZE 256
 
-void shell_prompt();
-void fork_function();
+void shell_prompt(void);
+void fork_function(char *buffer);
+char *custom_getline_function();
+char *custom_strtok(char *input);
 
 
 #endif

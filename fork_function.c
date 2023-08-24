@@ -1,19 +1,25 @@
 #include "main.h"
 
-/*
- * main - this funtion call the prompt and print with loop
+/**
+ * fork_function - creates a child process
+ * @buffer: executes a command
+ * this function call the fork system call
+ * exit terminates the program, if fork or execution fail
+ * stderr is printed
+ *
  */
 
-void fork_function()
+void fork_function(char *buffer)
 {
-	char buffer[BUFFER_SIZE];
 
-	if(fgets, (buffer, BUFFER_SIZE, stdin) == NULL)
-	{
-	printf("DIsconnecting...");
-	}
 
 	buffer[strcspn(buffer, "\n")] = '\0';
+	if (strcmp(buffer, "exit") == 0)
+	{
+		printf("Disconnecting...!\n");
+		exit(EXIT_SUCCESS);
+	}
+
 	pid_t pid = fork();
 
 	if (pid < 0)
@@ -21,7 +27,7 @@ void fork_function()
 		fprintf(stderr, "fork failed");
 	}
 
-	else if (pid = 0)
+	else if (pid == 0)
 	{
 		execlp(buffer, buffer, NULL);
 		fprintf(stderr, "'%s' command not found", buffer);
